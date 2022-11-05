@@ -1,4 +1,4 @@
-/* eslint-disable react/sort-prop-types */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, Text, StyleSheet, Button } from 'react-native'
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // backgroundColor: 'red',
     paddingVertical: 10,
     paddingHorizontal: 6,
     marginBottom: 12,

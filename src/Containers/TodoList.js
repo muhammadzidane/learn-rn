@@ -8,13 +8,9 @@ import { List } from '@/Components'
 // Services
 import { useLazyGetTodoQuery } from '@/Services/modules/todos'
 
-// Assets
-// import { AddOutline } from '@/Components/Svg' // ! Issue
-
 const TodoList = () => {
   // Hooks
-  const [getTodo, { data, isSuccess, isLoading, isFetching, error }] =
-    useLazyGetTodoQuery()
+  const [getTodo, { data, isSuccess, isLoading }] = useLazyGetTodoQuery()
 
   useEffect(() => {
     getTodo()
@@ -32,11 +28,14 @@ const TodoList = () => {
   return (
     <View>
       <View style={styles.content}>
-        <View>
-          <List title="ngapain lo?" onDelete={onDeleteList} />
-          <List title="ngapain yaaa?" onDelete={onDeleteList} />
-          {/* <Text>wkwkwk</Text> */}
-        </View>
+        {isLoading && <Text>Loading ...</Text>}
+        {isSuccess && (
+          <View>
+            {data.map(({ id, taskName, completed }) => (
+              <List key={id} title={taskName} onDelete={onDeleteList} />
+            ))}
+          </View>
+        )}
         <View style={styles.buttonCreateTodoWrapper}>
           <TouchableOpacity
             onPress={onCreateTodo}

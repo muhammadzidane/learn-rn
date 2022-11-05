@@ -12,12 +12,14 @@ import {
   REGISTER,
 } from 'redux-persist'
 
+import { todoApi } from '@/Services/modules/todos'
 import { api } from '@/Services/api'
 import theme from './Theme'
 
 const reducers = combineReducers({
   theme,
   api: api.reducer,
+  [todoApi.reducerPath]: todoApi.reducer,
 })
 
 const persistConfig = {

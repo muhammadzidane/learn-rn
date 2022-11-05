@@ -1,11 +1,10 @@
 import { api } from '@/Services/api'
 
 export const todoApi = api.injectEndpoints({
-  endpoints: () => ({
-    getTodo: build =>
-      build.query({
-        query: () => '/todo',
-      }),
+  endpoints: builder => ({
+    getTodo: builder.query({
+      query: () => '/todo',
+    }),
   }),
   overrideExisting: false,
 })
